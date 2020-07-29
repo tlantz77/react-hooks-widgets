@@ -18,7 +18,7 @@ const Search = () => {
 
   useEffect(() => {
     const search = async () => {
-      const { data } = await axios.get('https://en.wikipedia.org/w/api.php', {
+      const {data} = await axios.get('https://en.wikipedia.org/w/api.php', {
         params: {
           action: 'query',
           list: 'search',
@@ -30,14 +30,14 @@ const Search = () => {
 
       setResults(data.query.search);
     };
-      
+
     search();
   }, [debouncedTerm]);
 
   const renderedResults = results.map(result => {
     return (
       <div key={result.pageid} className='item'>
-        <div className="right floated content">
+        <div className='right floated content'>
           <a 
             className='ui button'
             href={`https://en.wikipedia.org?curid=${result.pageid}`}
